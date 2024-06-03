@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rentcarsdemo</title>
+</head>
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"> 
+<script>
+
+    var car = {{ cars | safe }};
+    var list = document.getElementsByClassName("car");
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        for (let index = 0; index < list.length; index++) {
+            list[index].value = 'not_check';
+        };
+
+        for (let index = 0; index < list.length; index++) {
+
+            for (let j = 0; j < car.length; j++) {
+                if (list[index].id === car[j]) {
+                    list[index].value = 'check';
+                }
+            }
+        };
+
+
+        for (let index = 0; index < list.length; index++) {
+            if (list[index].value === 'not_check') {
+                list[index].style.display = 'none';
+            }
+        }
+    });
+    var start = document.getElementById("trip_start").value;
+    var end = document.getElementById("trip_end").value;
+    var btn = document.getElementsByName("button").style;
+
+    if (start == '' || end == '') {
+        btn.display = 'none';
+    }
+    else {
+        btn.display = 'block'
+    }
+
+</script>
+
+<body>
+    <div id="Image">
+        <img src="/static/wallpaper.jpg" alt="#">
+
+        <form class="search" action="/date" method="post">
+            <strong>Find & Book a great deal today</strong>
+            <br>
+            <label for="trip_start">trip start date:</label>
+            <input type="date" name="trip_start" id="trip_start" required>
+            <br>
+            <label for="trip_end">trip end date:</label>
+            <input type="date" name="trip_end" id="trip_end" required>
+            <br>
+            <button type="submit">FIND</button>
+        </form>
+    </div>
+
+    <div id="list">
+        <div>
+
+            <form class="car" id="Ertiga" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Ertiga.png">
+                <lable class="car_name">Ertiga</lable><br>
+                <label class="car_year" style="font-size: 10px;">2022</label><br>
+                <i class='fa fa-user'> 7</i>
+                <i class="fa fa-car"> 20-26 km/l </i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Ertiga" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="hyundai_verna" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/hyundai_verna.png">
+                <lable class="car_name">Hyundai Verna</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2023</label><br>
+                <i class='fa fa-user'> 5</i>
+                <i class="fa fa-car"> 19-21 km/l</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 17.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="hyundai_verna" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Kia_Carens" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Kia_Carens.png">
+                <lable class="car_name">Kia Carens</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2016</label><br>
+                <i class='fa fa-user'> 6,7</i>
+                <i class="fa fa-car"> 16-17 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Kia_Carens" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Mahindra_XUV_700" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Mahindra_XUV_700.png">
+                <lable class="car_name">MahindraXUV700</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2021</label><br>
+                <i class='fa fa-user'> 7</i>
+                <i class="fa fa-car">  16.6 KM/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Mahindra_XUV_700" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Maruti_Baleno" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Maruti_Baleno.png">
+                <lable class="car_name">Maruti Baleno</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2015</label><br>
+                <i class='fa fa-user'> 5</i>
+                <i class="fa fa-car"> 27 km/l </i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 17.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Maruti_Baleno" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Ertiga2" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Ertiga.png">
+                <lable class="car_name">Ertiga</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2022</label><br>
+                <i class='fa fa-user'> 7</i>
+                <i class="fa fa-car"> 20-26 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Ertiga2" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Ertiga3" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Ertiga.png">
+                <lable class="car_name">Ertiga</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2016</label><br>
+                <i class='fa fa-user'> 7</i>
+                <i class="fa fa-car"> 24.7-31.4 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Ertiga3" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Tata_Nexon" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Tata_Nexon.png">
+                <lable class="car_name">Tata Nexon</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2017</label><br>
+                <i class='fa fa-user'> 7</i>
+                <i class="fa fa-car"> 17-21 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 30.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Tata_Nexon" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Tata_Nexon2" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Tata_Nexon.png">
+                <lable class="car_name">Tata Nexon</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2017</label><br>
+                <i class='fa fa-user'> 5</i>
+                <i class="fa fa-car"> 17-21 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 17.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Tata_Nexon2" type="submit">Rent now</button>
+            </form>
+            <form class="car" id="Maruti_Baleno2" value="not_check" action="/button" method="post">
+                <img src="/static/car_image/Maruti_Baleno.png">
+                <lable class="car_name">Maruti_Baleno</lable><br>
+                <label class="car_year" style="font-size: 10px;"> 2015</label><br>
+                <i class='fa fa-user'> 5</i>
+                <i class="fa fa-car"> 27 Km/L</i> <br>
+                <i class="fa fa-car-door"></i>
+                <label class="rate"> 17.00INR</label>
+                <unable> /Km</unable>
+                <button name="button" value="Maruti_Baleno2" type="submit">Rent now</button>
+            </form>
+
+        </div>
+
+    </div>
+    <img src="/static/travel.jpg" style="height: 500px;width: 100%;;" alt="">
+    <div class="contact">
+        <h1>About as</h1>
+        <li>for any quares mail on</li>
+        
+        <li>pateluditya@gmail.com</li>
+
+        <div class="social_drawer">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-whatsapp"></i>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
