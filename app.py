@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from email.message import EmailMessage
 from flask_pymongo import PyMongo
 import random
 import smtplib
@@ -134,10 +135,17 @@ def send_mail():
 def re_send_otp():
     global otp,server
     otp = random.randint(1111,9999)
+
+    msg = EmailMessage()
+    msg['Subject'] = 'OTP Verification by Rental'
+    msg['From'] = "pateluditya2004@gmail.com"
+    msg['To'] = sender_email
+    msg.set_content('thankyou for using Rental service, otp: '+str(otp))
+
     server = smtplib.SMTP("smtp.gmail.com",587)
     server.starttls()
     server.login("pateluditya2004@gmail.com","xqyfzjwcolimfwtx")
-    server.sendmail("pateluditya2004@gmail.com",sender_email,str(otp))
+    server.sendmail("pateluditya2004@gmail.com",sender_email,msg.as_string())
 
     return render_template('otp.html')
 
@@ -154,6 +162,12 @@ def confirm_otp():
         return render_template('payment.html')
     else:
         return render_template('otp.html',status = "otp is wrong")
-  
+
+@app.route('/skip', methods=['GET','POST'])
+def skip():
+    
+    return render_template('thank.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
