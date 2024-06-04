@@ -1,12 +1,16 @@
 * {
     margin: 0;
 }
+:root{
+    --blue:rgb(28, 28, 136);
+    --red:red;
+    --white:white;
+    --grey:rgb(158, 159, 160);
+}
 
 #main {
-    /* background-color: rgb(255, 255, 255); */
+    background-color: var(--white);
     height: 100vh;
-    /* background: linear-gradient(to right top,red ,white,green); */
-
     display: grid;
     place-items: center;
 }
@@ -14,25 +18,22 @@
 #signup {
     width: 255px;
     height: 356px;
-    border-radius: 20px;
-    background-color: rgb(255, 255, 255);
+    /* border-radius: 20px; */
+    background-color: var(--white);
     box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-    -webkit-box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-    -moz-box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-    /* display: block; */
     text-align: center;
     border: 1px solid blueviolet;
 }
 
 #signup .label {
     font-size: 30px;
-    color: blueviolet;
+    color: var(--blue);
 }
 
 #signup form {
     width: 100%;
     height: auto;
-    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(255, 255, 255); */
     display: grid;
     place-items: center;
     padding-top: 50px;
@@ -43,44 +44,39 @@
     width: 80%;
     outline: none;
     background-color: rgb(255, 255, 255);
-    /* border: none; */
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 1px solid blueviolet;
-    margin-top: 15px;
     margin-bottom: 15px;
-    color: rgb(118, 0, 228);
+    color: var(--blue);
+    outline: none;
+    border: 1px solid rgb(188, 188, 188);
 }
 #signup input[type=number]::-webkit-inner-spin-button{
     -webkit-appearance: none;
 }
 
 #signup input::placeholder {
-    color: rgb(180, 122, 235);
+    color: rgb(103, 101, 101);
 }
 
 #signup button {
     margin-top: 70px;
     width: 100px;
     height: 30px;
-    background-color: rgb(255, 255, 255);
-    color: red;
+    background-color: var(--red);
+    color: white;
     outline: none;
-    border: 1px solid blueviolet;
-    border-radius: 20px;
+    border: none;
     cursor: pointer;
     transition: 1s;
 }
 
 #signup button:hover {
-    background-color: blueviolet;
+    background-color: var(--blue);
     color: white;
-    border: 10px solid blueviolet;
+    border: 10px solid var(--blue);
 }
 
 .alert {
-    color: blueviolet;
+    color: grey;
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

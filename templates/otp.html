@@ -1,125 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>OTP Verification</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </head>
-    <style>
-        * {
-            margin: 0;
-        }
-    
-        #main {
-            background-color: rgb(255, 255, 255);
-            height: 100vh;
-    
-            display: grid;
-            place-items: center;
-        }
-    
-        #signup {
-            width: 255px;
-            height: 300px;
-            border-radius: 20px;
-            background-color: rgb(255, 255, 255);
-            box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-            -webkit-box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-            -moz-box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
-            /* display: block; */
-            text-align: center;
-            border: 1px solid blueviolet;
-        }
-    
-        #signup .label {
-            font-size: 30px;
-            color: blueviolet;
-        }
-    
-        #signup #otp_form {
-            width: 100%;
-            height: auto;
-            background-color: rgb(255, 255, 255);
-            display: grid;
-            place-items: center;
-            padding-top: 50px;
-        }
-    
-        #signup input {
-            height: 30px;
-            width: 80%;
-            outline: none;
-            background-color: rgb(255, 255, 255);
-            /* border: none; */
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: 1px solid blueviolet;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            color: rgb(118, 0, 228);
-            text-align: center;
-        }
-        #signup input[type=number]::-webkit-inner-spin-button{
-            -webkit-appearance: none;
-        }
-    
-        #signup input::placeholder {
-            color: rgb(180, 122, 235);
-        }
-    
-        #signup #submit {
-            margin-top: 70px;
-            width: 100px;
-            height: 30px;
-            background-color: rgb(255, 255, 255);
-            color: red;
-            outline: none;
-            border: 1px solid blueviolet;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: 1s;
-        }
-    
-        #signup #submit:hover {
-            background-color: blueviolet;
-            color: white;
-            border: 10px solid blueviolet;
-        }
-        #resend_form{
-            /* background-color: rgb(255, 255, 255); */
-            
-            text-align: left;
-        
-        }
-        #resend{
-            font-size: 10px;
-            color: rgb(126, 124, 124);
-            background-color: white;
-            outline: none;
-            border: none;
-            position: relative;
-            left: 10%;
-        }
-    </style>
-    
-    <body>
-        <div id="main">
-            <div id="signup">
-                <label for="" class="label">OTP Verification</label>
-                    <form id="otp_form" action="/confirm_otp" method="post">
-                        
-                        <input type="number" name="otp" id="otp" placeholder="XXXX" required>
-                        <p>{{status}}</p>
-                        <button id="submit" class="button-four" type="submit">verify</button>        
-                    </form>
-                    <form id="resend_form" action="/re_send_otp" method="post">
-                    <button id="resend"><li> resend otp</li></button>
-                </form>
-            </div>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+    }
+
+    :root {
+        --blue: rgb(28, 28, 136);
+        --red: red;
+        --white: white;
+        --grey: rgb(158, 159, 160);
+    }
+
+    #main {
+        background-color: var(--white);
+        height: 100vh;
+        display: grid;
+        place-items: center;
+    }
+
+    #signup {
+        width: 255px;
+        height: 300px;
+        /* border-radius: 20px; */
+        background-color: var(--white);
+        box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.61);
+        text-align: center;
+        border: 1px solid blueviolet;
+    }
+
+    #signup .label {
+        font-size: 30px;
+        color: var(--blue);
+    }
+
+    #signup #otp_form {
+        width: 100%;
+        height: auto;
+        /* background-color: rgb(255, 255, 255); */
+        display: grid;
+        place-items: center;
+        padding-top: 50px;
+    }
+
+    #signup input {
+        height: 20px;
+        width: 80%;
+        outline: none;
+        text-align: center;
+        background-color: rgb(255, 255, 255);
+        margin-bottom: 15px;
+        color: var(--blue);
+        outline: none;
+        border: 1px solid rgb(188, 188, 188);
+    }
+
+    #signup input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    #signup input::placeholder {
+        color: rgb(103, 101, 101);
+    }
+
+    #otp_form button {
+        margin-top: 70px;
+        width: 100px;
+        height: 30px;
+        background-color: var(--red);
+        color: white;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        transition: 1s;
+    }
+
+    #otp_form button:hover {
+        background-color: var(--blue);
+        color: white;
+        border: 10px solid var(--blue);
+    }
+
+    .alert {
+        color: grey;
+        font-size: 20px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    #resend_form button{
+        background-color: white;
+        color: black;
+        border: none;
+        list-style: none;
+        display: block;
+    }
+    #resend_form button:hover{
+        color: red;
+        border: none;
+        list-style: none;
+        display: block;
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div id="signup">
+            <label for="" class="label">OTP Verification</label>
+            <form id="otp_form" action="/confirm_otp" method="post">
+
+                <input type="number" name="otp" id="otp" placeholder="XXXX" required>
+                <p>{{status}}</p>
+                <button id="submit" class="button-four" type="submit">verify</button>
+            </form>
+            <form id="resend_form" action="/re_send_otp" method="post">
+                <br>
+                
+                <button id="resend">
+                
+                    <li> resend otp</li>
+                </button>
+            </form>
         </div>
-    </body>
+    </div>
+</body>
 
 </html>

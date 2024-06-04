@@ -9,7 +9,249 @@
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}"> 
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+}
+
+
+#Image img {
+    z-index: -1;
+    width: 100%;
+}
+
+
+#Image form {
+    height: 260px;
+    width: 200px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: 7%;
+    top: 40px;
+    padding: 3%;
+    display: grid;
+
+
+}
+
+#Image form strong {
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+#Image form input {
+    width: 100%;
+    height: 20px;
+    outline: none;
+    /* border: none; */
+    border: 1px solid rgb(188, 188, 188);
+
+}
+
+#Image form button {
+
+    border: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+
+}
+
+#Image form label {
+    color: rgb(0, 0, 0);
+}
+
+#list {
+    background-color: rgb(241, 241, 241);
+    width: 100%;
+    height: auto;
+    /* margin-top: -10%; */
+    display: grid;
+    /* position: absolute; */
+
+
+    place-items: center;
+}
+
+#list div {
+    height: auto;
+    width: 80%;
+    margin-bottom: 10%;
+    background-color: rgb(241, 241, 241);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+#list div form {
+    width: 200px;
+    height: 290px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    margin: 10px;
+    display: inline-block;
+    /* display: none; */
+    /* margin: 10px; */
+
+}
+
+.car img {
+    width: 100%;
+    /* height: auto; */
+}
+
+#list div form button {
+    width: 80px;
+    height: 30px;
+    position: relative;
+    right: 41px;
+
+    bottom: -31px;
+    outline: none;
+    border: none;
+    color: rgb(255, 255, 255);
+    background: red;
+    cursor: pointer;
+
+}
+
+#list div form .car_name {
+    color: rgb(28, 28, 136);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#list div form .car_year,
+#list div form i {
+    color: rgb(158, 159, 160);
+}
+
+#list div form .rate {
+    color: rgb(28, 28, 136);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#list div form unable {
+    color: rgb(158, 159, 160);
+    font-size: 13px;
+
+}
+
+.contact {
+    width: 100%;
+    height: 165px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+
+.contact li {
+    list-style: none;
+    color: red;
+}
+
+.social_drawer {
+    width: 100%;
+    height: 40px;
+    /* background-color: rgb(172, 104, 36); */
+    position: relative;
+    top: 20%;
+    text-align: center;
+}
+
+.social_drawer i {
+    display: inline-block;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+    color: blueviolet;
+    /* background-color: rgb(255, 224, 223); */
+    /* padding: 10px; */
+}
+
+.social_drawer i:hover {
+    color: rgb(255, 255, 255);
+}
+
+
+/*  resonsive  */
+@media only screen and (min-width: 320px) and (max-width: 375px) {
+    #Image form {
+        top: 4px;
+        height: 170px;
+        width: 80%;
+        place-items: center;
+    }
+
+    #Image form strong {
+        font-size: 15px;
+    }
+
+    #Image form button {
+        width: 50px;
+        height: 23px;
+        border-radius: 4px;
+    }
+
+    #Image form input {
+        width: 45%;
+        height: 20px;
+    }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 555px) {
+    #Image form {
+        height: 168px;
+        width: 80%;
+        place-items: center;
+        top: 15px;
+    }
+
+    #Image form button {
+        width: 50px;
+        height: 23px;
+        border-radius: 4px;
+
+    }
+
+    #Image form input {
+        width: 45%;
+        height: 20px;
+    }
+
+    #Image form strong {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+    #Image form {
+        height: 322px;
+        width: 246px;
+        top: 148px;
+    }
+
+    #Image form strong {
+        font-size: 35px;
+    }
+
+    #Image form input {
+        height: 50px;
+    }
+
+    #Image form button {
+        height: 42px;
+    }
+
+    #list div {
+        width: 90%;
+    }
+}
+</style>
 <script>
+
 
     var car = {{ cars | safe }};
     var list = document.getElementsByClassName("car");
@@ -56,10 +298,10 @@
             <strong>Find & Book a great deal today</strong>
             <br>
             <label for="trip_start">trip start date:</label>
-            <input type="date" name="trip_start" id="trip_start" required>
+            <input type="date" name="trip_start" id="trip_start" value='{{trip_str}}' required>
             <br>
             <label for="trip_end">trip end date:</label>
-            <input type="date" name="trip_end" id="trip_end" required>
+            <input type="date" name="trip_end" id="trip_end" value='{{trip_nd}}' required>
             <br>
             <button type="submit">FIND</button>
         </form>
@@ -68,8 +310,9 @@
     <div id="list">
         <div>
 
-            <form class="car" id="Ertiga" value="not_check" action="/button" method="post">
-                <img src="/static/car_image/Ertiga.png">
+                
+                <form class="car" id="Ertiga" value="not_check" action="/button" method="post">
+                    <img src="/static/car_image/Ertiga.png">
                 <lable class="car_name">Ertiga</lable><br>
                 <label class="car_year" style="font-size: 10px;">2022</label><br>
                 <i class='fa fa-user'> 7</i>
@@ -178,12 +421,13 @@
                 <unable> /Km</unable>
                 <button name="button" value="Maruti_Baleno2" type="submit">Rent now</button>
             </form>
-
         </div>
 
+
+
     </div>
-    <img src="/static/travel.jpg" style="height: 500px;width: 100%;;" alt="">
     <div class="contact">
+        <img src="/static/travel.jpg" style="height: 500px;width: 100%;;" alt="">
         <h1>About as</h1>
         <li>for any quares mail on</li>
         

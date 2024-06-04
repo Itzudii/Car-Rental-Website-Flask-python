@@ -91,7 +91,7 @@ def home():
 
 @app.route('/date', methods=['POST'])
 def date():
-    global tripstar,tripen
+    global trip
     tripstart =  request.form.get('trip_start')
     tripend = request.form.get('trip_end')
     print(tripstart)
@@ -109,7 +109,7 @@ def date():
         if run(car_list_db,trip,num=i) == car_list_db[i]:
            car.append(car_list[i])
 
-    return render_template('dashboard.html',cars=json.dumps(car))
+    return render_template('dashboard.html',cars=json.dumps(car),trip_str = tripstart,trip_nd = tripend)
 
 @app.route('/button', methods=['GET','POST'])
 def button():
@@ -152,12 +152,11 @@ def re_send_otp():
 
 @app.route('/confirm_otp', methods=['POST'])
 def confirm_otp():
-    global tripen,tripstar
     sender_otp = request.form.get('otp')
     btn=car_name
 
     if int(sender_otp) == otp:
-        enter = {"sender_email":sender_email,"tripstart":tripstar,"tripend":tripen,"sender_phone_no":sender_phone_no}
+        enter = {"sender_email":sender_email,"tripstart":trip[0],"tripend":trip[1],"sender_phone_no":sender_phone_no}
         finder(btn).insert_one(enter)
         return render_template('payment.html')
     else:
