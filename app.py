@@ -91,10 +91,9 @@ def home():
 
 @app.route('/date', methods=['POST'])
 def date():
-    global trip
+    global start,end
     tripstart =  request.form.get('trip_start')
     tripend = request.form.get('trip_end')
-    print(tripstart)
 
     tripstar=str(tripstart[5])+str(tripstart[6])+'/'+str(tripstart[8])+str(tripstart[9])+'/'+str(tripstart[0])+str(tripstart[1])+str(tripstart[2])+str(tripstart[3])
     tripen=str(tripend[5])+str(tripend[6])+'/'+str(tripend[8])+str(tripend[9])+'/'+str(tripend[0])+str(tripend[1])+str(tripend[2])+str(tripend[3])
@@ -103,6 +102,8 @@ def date():
     car_list=['Ertiga','hyundai_verna','Kia_Carens','Mahindra_XUV_700','Maruti_Baleno','Ertiga2','Ertiga3','Tata_Nexon','Tata_Nexon2','Maruti_Baleno2']
     car_list_db=[db.Ertiga,db.hyundai_verna,db.Kia_Carens,db.Mahindra_XUV_700,db.Maruti_Baleno,db.Ertiga2,db.Ertiga3,db.Tata_Nexon,db.Tata_Nexon2,db.Maruti_Baleno2]
     trip=[tripstar,tripen]
+    start=tripstar
+    end=tripen
     
     car=[]
     for i in range(len(car_list_db)):
@@ -156,7 +157,7 @@ def confirm_otp():
     btn=car_name
 
     if int(sender_otp) == otp:
-        enter = {"sender_email":sender_email,"tripstart":trip[0],"tripend":trip[1],"sender_phone_no":sender_phone_no}
+        enter = {"sender_email":sender_email,"tripstart":start,"tripend":end,"sender_phone_no":sender_phone_no}
         finder(btn).insert_one(enter)
         return render_template('payment.html')
     else:
