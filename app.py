@@ -7,28 +7,19 @@ import json
 import time
 
 def finder(a):
-    if a=='Ertiga':
-        index=db.Ertiga
-    elif a=='hyundai_verna':
-        index=db.hyundai_verna
-    elif a=='Kia_Carens':
-        index=db.Kia_Carens
-    elif a=='Mahindra_XUV_700':
-        index=db.Mahindra_XUV_700
-    elif a=='Maruti_Baleno':
-        index=db.Maruti_Baleno
-    elif a=='Ertiga2':
-        index=db.Ertiga2
-    elif a=='Ertiga3':
-        index=db.Ertiga3
-    elif a=='Tata_Nexon':
-        index=db.Tata_Nexon
-    elif a=='Tata_Nexon2':
-        index=db.Tata_Nexon2
-    elif a=='Maruti_Baleno2':
-        index=db.Maruti_Baleno2
-    
-    return index
+    collection_names = {
+        'Ertiga': db.Ertiga,
+        'hyundai_verna': db.hyundai_verna,
+        'Kia_Carens': db.Kia_Carens,
+        'Mahindra_XUV_700': db.Mahindra_XUV_700,
+        'Maruti_Baleno': db.Maruti_Baleno,
+        'Ertiga2': db.Ertiga2,
+        'Ertiga3': db.Ertiga3,
+        'Tata_Nexon': db.Tata_Nexon,
+        'Tata_Nexon2': db.Tata_Nexon2,
+        'Maruti_Baleno2': db.Maruti_Baleno2
+    }
+    return collection_names.get(a)
 
 def email_save(email,phone_no):
     active_time = time.ctime()
@@ -84,6 +75,8 @@ app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
 
+start=None
+end = None
 
 @app.route('/')
 def home():
@@ -153,11 +146,12 @@ def re_send_otp():
 
 @app.route('/confirm_otp', methods=['POST'])
 def confirm_otp():
+    global start,end
     sender_otp = request.form.get('otp')
     btn=car_name
 
     if int(sender_otp) == otp:
-        enter = {"sender_email":sender_email,"tripstart":start,"tripend":end,"sender_phone_no":sender_phone_no}
+        enter = {"sender_email":sender_email,"tripstart":start,"tripend":end,"sender_phone_no":int(sender_phone_no)}
         finder(btn).insert_one(enter)
         return render_template('payment.html')
     else:

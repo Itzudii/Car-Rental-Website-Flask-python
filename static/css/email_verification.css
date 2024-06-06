@@ -61,18 +61,16 @@
     margin-top: 70px;
     width: 100px;
     height: 30px;
-    background-color: var(--red);
+    background-color: var(--blue);
     color: white;
     outline: none;
     border: none;
     cursor: pointer;
-    transition: 1s;
 }
 
 #signup button:hover {
-    background-color: var(--blue);
-    color: white;
-    border: 10px solid var(--blue);
+    background-color: var(--red);
+    color: white
 }
 
 .alert {

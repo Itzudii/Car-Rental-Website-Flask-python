@@ -3,7 +3,6 @@
     margin: 0;
 }
 
-
 #Image img {
     z-index: -1;
     width: 100%;
@@ -13,7 +12,7 @@
 #Image form {
     height: 260px;
     width: 200px;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     position: absolute;
     left: 7%;
     top: 40px;
@@ -33,18 +32,20 @@
     width: 100%;
     height: 20px;
     outline: none;
-    /* border: none; */
-    border: 1px solid rgb(188, 188, 188);
+    border: 1px solid rgb(158, 159, 160);
 
 }
 
 #Image form button {
-
     border: none;
-    background-color: red;
+    background-color: blue;
     color: white;
     cursor: pointer;
 
+}
+
+#Image form button:hover {
+    background-color: red;
 }
 
 #Image form label {
@@ -55,11 +56,7 @@
     background-color: rgb(241, 241, 241);
     width: 100%;
     height: auto;
-    /* margin-top: -10%; */
     display: grid;
-    /* position: absolute; */
-
-
     place-items: center;
 }
 
@@ -81,14 +78,10 @@
     padding: 5px;
     margin: 10px;
     display: inline-block;
-    /* display: none; */
-    /* margin: 10px; */
-
 }
 
 .car img {
     width: 100%;
-    /* height: auto; */
 }
 
 #list div form button {
@@ -96,14 +89,16 @@
     height: 30px;
     position: relative;
     right: 41px;
-
     bottom: -31px;
     outline: none;
     border: none;
     color: rgb(255, 255, 255);
-    background: red;
+    background: blue;
     cursor: pointer;
+}
 
+#list div form button:hover {
+    background-color: red;
 }
 
 #list div form .car_name {
@@ -121,29 +116,53 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#list div form unable {
-    color: rgb(158, 159, 160);
-    font-size: 13px;
-
-}
-
 .contact {
     width: 100%;
-    height: 165px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(70, 70, 70);
     text-align: center;
+}
+
+.contact h1,
+.contact label {
+    color: white;
+}
+
+
+/* .contact li {
+/* list-style: none; */
+/* color: rgb(0, 0, 0); */
+.info {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(70, 70, 70);
+}
+
+.info div {
+    background-color: rgb(70, 70, 70);
+    color: white;
+    width: 90%;
+    text-align: left;
+}
+
+.info div h2 {
+    color: rgb(142, 142, 140);
 
 }
 
-.contact li {
-    list-style: none;
-    color: red;
+.info div li,
+.info div p {
+    color: rgb(232, 229, 229);
+
+}
+
+.contact img {
+    width: 100%;
+    height: auto;
 }
 
 .social_drawer {
     width: 100%;
     height: 40px;
-    /* background-color: rgb(172, 104, 36); */
     position: relative;
     top: 20%;
     text-align: center;
@@ -154,13 +173,11 @@
     font-size: 20px;
     margin-left: 20px;
     margin-top: 10px;
-    color: blueviolet;
-    /* background-color: rgb(255, 224, 223); */
-    /* padding: 10px; */
+    color: rgb(4, 4, 97);
 }
 
 .social_drawer i:hover {
-    color: rgb(255, 255, 255);
+    color: rgb(255, 1, 1);
 }
 
 

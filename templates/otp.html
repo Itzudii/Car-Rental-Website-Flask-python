@@ -44,7 +44,6 @@
     #signup #otp_form {
         width: 100%;
         height: auto;
-        /* background-color: rgb(255, 255, 255); */
         display: grid;
         place-items: center;
         padding-top: 50px;
@@ -74,24 +73,20 @@
         margin-top: 70px;
         width: 100px;
         height: 30px;
-        background-color: var(--red);
+        background-color: var(--blue);
         color: white;
         outline: none;
         border: none;
         cursor: pointer;
         transition: 1s;
     }
-
-    #otp_form button:hover {
-        background-color: var(--blue);
-        color: white;
-        border: 10px solid var(--blue);
+    #otp_form p{
+        color: red;
     }
 
-    .alert {
-        color: grey;
-        font-size: 20px;
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    #otp_form button:hover {
+        background-color: var(--red);
+        color: white;
     }
     #resend_form button{
         background-color: white;
@@ -120,9 +115,7 @@
             </form>
             <form id="resend_form" action="/re_send_otp" method="post">
                 <br>
-                
                 <button id="resend">
-                
                     <li> resend otp</li>
                 </button>
             </form>
