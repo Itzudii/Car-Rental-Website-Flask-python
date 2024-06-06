@@ -83,7 +83,7 @@ def home():
 
 @app.route('/date', methods=['POST'])
 def date():
-    global tripstar,tripen
+    global trip
     tripstart =  request.form.get('trip_start')
     tripend = request.form.get('trip_end')
 
