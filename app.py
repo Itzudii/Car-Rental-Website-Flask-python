@@ -6,6 +6,8 @@ import smtplib
 import json
 import time
 
+
+
 def finder(a):
     collection_names = {
         'Ertiga': db.Ertiga,
@@ -74,6 +76,8 @@ app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
+start=tripstar
+end=tripen
 
 @app.route('/')
 def home():
@@ -81,7 +85,7 @@ def home():
 
 @app.route('/date', methods=['POST'])
 def date():
-    global start,end
+    global tripstar,tripen
     tripstart =  request.form.get('trip_start')
     tripend = request.form.get('trip_end')
 
@@ -92,8 +96,7 @@ def date():
     car_list=['Ertiga','hyundai_verna','Kia_Carens','Mahindra_XUV_700','Maruti_Baleno','Ertiga2','Ertiga3','Tata_Nexon','Tata_Nexon2','Maruti_Baleno2']
     car_list_db=[db.Ertiga,db.hyundai_verna,db.Kia_Carens,db.Mahindra_XUV_700,db.Maruti_Baleno,db.Ertiga2,db.Ertiga3,db.Tata_Nexon,db.Tata_Nexon2,db.Maruti_Baleno2]
     trip=[tripstar,tripen]
-    start=tripstar
-    end=tripen
+    
     
     car=[]
     for i in range(len(car_list_db)):
