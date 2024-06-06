@@ -76,6 +76,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
+trips=''
 
 @app.route('/')
 def home():
@@ -83,7 +84,7 @@ def home():
 
 @app.route('/date', methods=['POST'])
 def date():
-    global trip
+    global trips
     tripstart =  request.form.get('trip_start')
     tripend = request.form.get('trip_end')
 
@@ -94,6 +95,7 @@ def date():
     car_list=['Ertiga','hyundai_verna','Kia_Carens','Mahindra_XUV_700','Maruti_Baleno','Ertiga2','Ertiga3','Tata_Nexon','Tata_Nexon2','Maruti_Baleno2']
     car_list_db=[db.Ertiga,db.hyundai_verna,db.Kia_Carens,db.Mahindra_XUV_700,db.Maruti_Baleno,db.Ertiga2,db.Ertiga3,db.Tata_Nexon,db.Tata_Nexon2,db.Maruti_Baleno2]
     trip=[tripstar,tripen]
+    trips = trip
     
     
     car=[]
@@ -107,7 +109,6 @@ def date():
 def button():
     global car_name
     car_name=''
-    print(trip)
     if request.method == 'POST':
         click_button = request.form.get('button')
         car_name = click_button
@@ -116,8 +117,6 @@ def button():
 @app.route('/send_mail', methods=['POST'])
 def send_mail():
     global sender_email,sender_phone_no
-    print(trip)
-
     sender_email = request.form.get('email')
     sender_phone_no = request.form.get('phone_no')
     email_save(sender_email,sender_phone_no)
@@ -129,8 +128,6 @@ def send_mail():
 def re_send_otp():
     global otp,server
     otp = random.randint(1111,9999)
-    print(trip)
-
     msg = EmailMessage()
     msg['Subject'] = 'OTP Verification by Rental'
     msg['From'] = "pateluditya2004@gmail.com"
@@ -147,13 +144,11 @@ def re_send_otp():
 
 @app.route('/confirm_otp', methods=['POST'])
 def confirm_otp():
-    global start,end
+    global trips
     sender_otp = request.form.get('otp')
     btn=car_name
-    print(trip)
-
     if int(sender_otp) == otp:
-        enter = {"sender_email":sender_email,"tripstart":start,"tripend":end,"sender_phone_no":int(sender_phone_no)}
+        enter = {"sender_email":sender_email,"tripstart":trips[0],"tripend":trips[1],"sender_phone_no":int(sender_phone_no)}
         finder(btn).insert_one(enter)
         return render_template('payment.html')
     else:
