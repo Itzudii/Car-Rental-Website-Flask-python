@@ -75,9 +75,6 @@ app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
 
-start=None
-end = None
-
 @app.route('/')
 def home():
     return render_template('dashboard.html')
