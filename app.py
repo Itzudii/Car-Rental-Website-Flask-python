@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request ,session
 from email.message import EmailMessage
 from flask_pymongo import PyMongo
 import random
@@ -76,7 +76,6 @@ app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
-trips=''
 
 @app.route('/')
 def home():
@@ -94,8 +93,9 @@ def date():
 # list of cars
     car_list=['Ertiga','hyundai_verna','Kia_Carens','Mahindra_XUV_700','Maruti_Baleno','Ertiga2','Ertiga3','Tata_Nexon','Tata_Nexon2','Maruti_Baleno2']
     car_list_db=[db.Ertiga,db.hyundai_verna,db.Kia_Carens,db.Mahindra_XUV_700,db.Maruti_Baleno,db.Ertiga2,db.Ertiga3,db.Tata_Nexon,db.Tata_Nexon2,db.Maruti_Baleno2]
-    trip=[tripstar,tripen]
-    trips = trip
+    
+    session['trip'] = [tripstar, tripen]
+    trip = session['trip']
     
     
     car=[]
@@ -148,7 +148,7 @@ def confirm_otp():
     sender_otp = request.form.get('otp')
     btn=car_name
     if int(sender_otp) == otp:
-        enter = {"sender_email":sender_email,"tripstart":trips[0],"tripend":trips[1],"sender_phone_no":int(sender_phone_no)}
+        enter = {"sender_email":sender_email,"tripstart":session['trip'][0],"tripend":session['trip'][1],"sender_phone_no":int(sender_phone_no)}
         finder(btn).insert_one(enter)
         return render_template('payment.html')
     else:
