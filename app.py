@@ -76,8 +76,6 @@ app = Flask(__name__, static_url_path='/static')
 app.config["SECRET_KEY"] = '469f4c19a0b489ccb8ff3630fcc762349f1eb868'
 app.config["MONGO_URI"] = "mongodb+srv://uditya:Uditya%402004@cluster0.xrfgs2y.mongodb.net/rentalcars"
 db = PyMongo(app).db
-start=tripstar
-end=tripen
 
 @app.route('/')
 def home():
@@ -109,6 +107,7 @@ def date():
 def button():
     global car_name
     car_name=''
+    print(trip)
     if request.method == 'POST':
         click_button = request.form.get('button')
         car_name = click_button
@@ -117,6 +116,7 @@ def button():
 @app.route('/send_mail', methods=['POST'])
 def send_mail():
     global sender_email,sender_phone_no
+    print(trip)
 
     sender_email = request.form.get('email')
     sender_phone_no = request.form.get('phone_no')
@@ -129,6 +129,7 @@ def send_mail():
 def re_send_otp():
     global otp,server
     otp = random.randint(1111,9999)
+    print(trip)
 
     msg = EmailMessage()
     msg['Subject'] = 'OTP Verification by Rental'
@@ -149,6 +150,7 @@ def confirm_otp():
     global start,end
     sender_otp = request.form.get('otp')
     btn=car_name
+    print(trip)
 
     if int(sender_otp) == otp:
         enter = {"sender_email":sender_email,"tripstart":start,"tripend":end,"sender_phone_no":int(sender_phone_no)}
