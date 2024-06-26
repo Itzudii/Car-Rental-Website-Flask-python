@@ -13,21 +13,23 @@ This repository contains the codebase for a dynamic car rental website that allo
 
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript (frameworks like React, Vue.js)
-- Backend: Node.js, Express.js, MongoDB (or your preferred database)
-- Authentication: JSON Web Tokens (JWT) for secure authentication
-- Deployment: Heroku, AWS, or similar cloud platforms
+- Backend:  Python, MongoDB (or your preferred database)
+- Deployment: Vercel, or similar cloud platforms
 
 ## Setup Instructions
 1. **Clone the repository:**
 2. **Install dependencies:**
 3. **Set up environment variables:**
-- Create a `.env` file in the root directory.
+-  add requirements by `requirements.txt`
 - Define environment variables like database URI, JWT secret, etc.
 
 4. **Run the application:**
 
 5. **Access the website:**
 - Open your web browser and go to `http://localhost:3000` (or the specified port).
+
+**[website link](https://urental.vercel.app/)**
+- if link show error don't worry.
 
 ## Folder Structure
 car-rental-dynamic/  
