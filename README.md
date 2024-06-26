@@ -1,9 +1,9 @@
-# Car Rental Dynamic Website
+# 🚗 Car Rental Dynamic Website
 
 ## Overview
 This repository contains the codebase for a dynamic car rental website that allows users to browse and rent cars based on availability and dates.
 
-## Features
+## ✨ Features
 - **Multiple Car Options:** Users can browse a variety of cars available for rental.
 - **Search Functionality:** Search and filter cars based on dates and preferences.
 - **User Authentication:** Login and registration functionality for users.
@@ -11,12 +11,12 @@ This repository contains the codebase for a dynamic car rental website that allo
 - **Booking Management:** Manage bookings and reservations.
 - **Responsive Design:** Ensures a seamless experience across different devices.
 
-## Technologies Used
-- Frontend: HTML, CSS, JavaScript (frameworks like React, Vue.js)
-- Backend:  Python, MongoDB (or your preferred database)
-- Deployment: Vercel, or similar cloud platforms
+## 🖥️ Technologies Used
+- **Frontend:** HTML, CSS, JavaScript (frameworks like React, Vue.js)
+- **Backend:**  Python, MongoDB (or your preferred database)
+- **Deployment:** Vercel, or similar cloud platforms
 
-## Setup Instructions
+## 🚀 Setup Instructions
 1. **Clone the repository:**
 2. **Install dependencies:**
 3. **Set up environment variables:**
@@ -31,7 +31,8 @@ This repository contains the codebase for a dynamic car rental website that allo
 **[website link](https://urental.vercel.app/)**
 - if link show error don't worry.
 
-## Folder Structure
+## 📁 Folder Structure
+```bash
 car-rental-dynamic/  
 │  
 ├── public/ # Static assets  
@@ -44,5 +45,6 @@ car-rental-dynamic/
 │  
 ├── .gitignore # Git ignore file  
 ├── package.json # Node.js dependencies  
-└── README.md # Project documentation  
+└── README.md # Project documentation
+```
   
