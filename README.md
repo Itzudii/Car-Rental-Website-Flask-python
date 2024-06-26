@@ -20,7 +20,7 @@ This repository contains the codebase for a dynamic car rental website that allo
 1. **Clone the repository:**
 2. **Install dependencies:**
 3. **Set up environment variables:**
--  add requirements by `requirements.txt`
+-  add requirements according to `requirements.txt`
 - Define environment variables like database URI, JWT secret, etc.
 
 4. **Run the application:**
