@@ -30,16 +30,17 @@ This repository contains the codebase for a dynamic car rental website that allo
 - Open your web browser and go to `http://localhost:3000` (or the specified port).
 
 ## Folder Structure
-car-rental-dynamic/
-│
-├── public/ # Static assets
-├── src/ # Source code
-│ ├── components/ # React components (if using React)
-│ ├── models/ # Database models
-│ ├── routes/ # Backend API routes
-│ ├── utils/ # Utility functions
-│ └── app.js # Main application file
-│
-├── .gitignore # Git ignore file
-├── package.json # Node.js dependencies
-└── README.md # Project documentation
+car-rental-dynamic/  
+│  
+├── public/ # Static assets  
+├── src/ # Source code  
+│ ├── components/ # React components (if using React)  
+│ ├── models/ # Database models  
+│ ├── routes/ # Backend API routes  
+│ ├── utils/ # Utility functions  
+│ └── app.js # Main application file  
+│  
+├── .gitignore # Git ignore file  
+├── package.json # Node.js dependencies  
+└── README.md # Project documentation  
+  
