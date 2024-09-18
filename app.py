@@ -130,14 +130,14 @@ def re_send_otp():
     otp = random.randint(1111,9999)
     msg = EmailMessage()
     msg['Subject'] = 'OTP Verification by Rental'
-    msg['From'] = "pateluditya2004@gmail.com"
+    m#sg['From'] = "pateluditya2004@gmail.com"
     msg['To'] = sender_email
     msg.set_content('thankyou for using Rental service, otp: '+str(otp))
 
-    server = smtplib.SMTP("smtp.gmail.com",587)
-    server.starttls()
-    server.login("pateluditya2004@gmail.com","xqyfzjwcolimfwtx")
-    server.sendmail("pateluditya2004@gmail.com",sender_email,msg.as_string())
+    #server = smtplib.SMTP("smtp.gmail.com",587)
+    #server.starttls()
+    )
+    #server.sendmail("pateluditya2004@gmail.com",sender_email,msg.as_string())
 
     return render_template('otp.html')
 
